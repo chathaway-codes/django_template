@@ -1,13 +1,7 @@
 # Django settings for {{ project_name }} project.
 import os
 
-PROJECT_ROOT = os.path.join(*os.path.realpath(__file__).split(os.sep)[:-2])
-
-if os.path.splitdrive(PROJECT_ROOT)[0] != '':
-    PROJECT_ROOT = os.path.splitdrive(PROJECT_ROOT)[0] + os.sep + os.path.splitdrive(PROJECT_ROOT)[1]
-else:
-    PROJECT_ROOT = os.path.join('/', PROJECT_ROOT)
-
+PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -104,8 +98,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = '{{ project_name }}.urls'
@@ -124,13 +117,13 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    '{{ project_name }}',
 )
 
 # A sample logging configuration. The only tangible logging
