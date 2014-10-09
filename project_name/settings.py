@@ -104,7 +104,7 @@ try:
 except:
     pass
 
-if DEBUG and SECRET_KEY == ''
+if DEBUG and SECRET_KEY == '':
     SECRET_KEY = '{{ secret_key }}'
-elif DEBUG = False:
+elif DEBUG == False:
     raise "You need to define a secret key!"
